@@ -4,6 +4,9 @@ services:
     env: static
     staticPublishPath: out
     buildCommand: npm install && npm run build
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
     routes:
       - type: rewrite
         source: /*
