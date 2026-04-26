@@ -441,7 +441,7 @@ footer {
 }
 .footer-copy { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ark-muted); }
 .footer-links { display: flex; gap: 2rem; list-style: none; }
-.footer-links a { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ark-muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: capitalize; color: var(--ark-muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--blue); }
 
 /* ---- CUSTOM CURSOR ---- */

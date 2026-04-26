@@ -6,7 +6,7 @@ export default function Footer() {
       <span className="footer-copy">© 2025 ARK Systems LLC &nbsp;|&nbsp; Sterling Heights, MI</span>
       <ul className="footer-links">
         {links.map(id => (
-          <li key={id}><a href={"/" + id} style={{ textTransform: "capitalize" }}>{id}</a></li>
+          <li key={id}><a href={"/" + id}>{id}</a></li>
         ))}
       </ul>
     </footer>

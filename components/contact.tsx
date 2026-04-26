@@ -3,26 +3,27 @@
 import { useState } from "react";
 import { Reveal } from "./reveal";
 
+type BtnState = { text: string; disabled: boolean; style: React.CSSProperties };
+const DEFAULT_BTN: BtnState = { text: "Send Message →", disabled: false, style: {} };
+
 export default function Contact() {
-  const [btnText, setBtnText] = useState("Send Message →");
-  const [btnDisabled, setBtnDisabled] = useState(false);
-  const [btnStyle, setBtnStyle] = useState<React.CSSProperties>({});
+  const [btn, setBtn] = useState<BtnState>(DEFAULT_BTN);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setBtnText("Sending..."); setBtnDisabled(true);
+    setBtn({ text: "Sending...", disabled: true, style: {} });
     try {
       const res = await fetch("https://formspree.io/f/mwvazowd", {
         method: "POST", body: new FormData(e.currentTarget), headers: { Accept: "application/json" },
       });
       if (res.ok) {
-        setBtnText("Message Sent ✓"); setBtnStyle({ background: "#10b981" });
-        (e.target as HTMLFormElement).reset();
-        setTimeout(() => { setBtnText("Send Message →"); setBtnStyle({}); setBtnDisabled(false); }, 3500);
+        setBtn({ text: "Message Sent ✓", disabled: true, style: { background: "#10b981" } });
+        e.currentTarget.reset();
+        setTimeout(() => setBtn(DEFAULT_BTN), 3500);
       } else throw new Error();
     } catch {
-      setBtnText("Failed. Try Again"); setBtnStyle({ background: "#ef4444" }); setBtnDisabled(false);
-      setTimeout(() => { setBtnText("Send Message →"); setBtnStyle({}); }, 3000);
+      setBtn({ text: "Failed. Try Again", disabled: false, style: { background: "#ef4444" } });
+      setTimeout(() => setBtn(DEFAULT_BTN), 3000);
     }
   }
 
@@ -67,7 +68,7 @@ export default function Contact() {
               <label className="form-label" htmlFor="message">Tell us more</label>
               <textarea className="form-textarea" id="message" name="message" placeholder="Share details, timeline, budget, or questions..." required />
             </div>
-            <button type="submit" className="btn-submit" disabled={btnDisabled} style={btnStyle}>{btnText}</button>
+            <button type="submit" className="btn-submit" disabled={btn.disabled} style={btn.style}>{btn.text}</button>
           </form>
         </Reveal>
       </div>

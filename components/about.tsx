@@ -1,6 +1,5 @@
-"use client";
-
 import { Reveal } from "./reveal";
+import { LetsTalkLink } from "./lets-talk-link";
 
 const stats = [
   { num: "100%", label: "Custom Builds" },
@@ -23,7 +22,7 @@ export default function About() {
             <p>We work with everyone from solo entrepreneurs launching their first site to established businesses ready to modernize their online presence. If it lives on the internet, we can build it better.</p>
             <p>Fast turnaround, direct communication, and zero bloated agency overhead. Just solid work at a fair price.</p>
           </div>
-          <a href="/contact" className="btn-primary" onClick={e => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); history.pushState(null, "", "/contact"); }}>Let&apos;s Talk</a>
+          <LetsTalkLink />
         </Reveal>
         <Reveal delay={150} className="about-stats">
           {stats.map(s => (

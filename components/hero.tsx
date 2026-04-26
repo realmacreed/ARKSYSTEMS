@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { navTo } from "@/lib/scroll";
 
 const phrases = [
   "You run the business.",
@@ -33,6 +34,7 @@ function useTypewriter() {
 }
 
 const visionText = "Your Vision.";
+const visionChars = [...visionText];
 
 export default function Hero() {
   const text = useTypewriter();
@@ -40,6 +42,7 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const orbRef = useRef<HTMLDivElement>(null);
+  const touchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     if (!window.matchMedia("(hover: hover)").matches) return;
@@ -61,11 +64,6 @@ export default function Hero() {
     return () => { hero.removeEventListener("mousemove", onMove); hero.removeEventListener("mouseleave", onLeave); };
   }, []);
 
-  function scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    history.pushState(null, "", "/" + id);
-  }
-
   return (
     <section id="hero" ref={heroRef}>
       <div className="hero-grid-bg" />
@@ -76,12 +74,12 @@ export default function Hero() {
           className="hero-title"
           onMouseEnter={() => setFilling(true)}
           onMouseLeave={() => setFilling(false)}
-          onTouchStart={() => setFilling(true)}
-          onTouchEnd={() => setTimeout(() => setFilling(false), 600)}
+          onTouchStart={() => { clearTimeout(touchTimer.current); setFilling(true); }}
+          onTouchEnd={() => { touchTimer.current = setTimeout(() => setFilling(false), 600); }}
         >
           <span className="line-1">We Build</span>
           <span className={`line-2${filling ? " vision-filling" : ""}`} id="heroVision">
-            {[...visionText].map((ch, i) => (
+            {visionChars.map((ch, i) => (
               <span key={i} className="vc" style={{ "--vi": i } as React.CSSProperties}>
                 {ch === " " ? " " : ch}
               </span>
@@ -94,8 +92,8 @@ export default function Hero() {
           <span className="cursor-blink" />
         </div>
         <div className="hero-ctas">
-          <a href="/work" onClick={e => { e.preventDefault(); scrollTo("work"); }} className="btn-primary">View Our Work</a>
-          <a href="/contact" onClick={e => { e.preventDefault(); scrollTo("contact"); }} className="btn-outline">Get a Quote</a>
+          <a href="/work" onClick={e => { e.preventDefault(); navTo("work"); history.pushState(null, "", "/work"); }} className="btn-primary">View Our Work</a>
+          <a href="/contact" onClick={e => { e.preventDefault(); navTo("contact"); history.pushState(null, "", "/contact"); }} className="btn-outline">Get a Quote</a>
         </div>
       </div>
       <div className="scroll-indicator">

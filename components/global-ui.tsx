@@ -53,20 +53,20 @@ function AnimusScan() {
     const el = ref.current; if (!el) return;
     el.style.opacity = "1";
     el.style.transition = "top 1.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s";
+    let t2: ReturnType<typeof setTimeout>;
     const t1 = setTimeout(() => {
       el.style.top = "100vh";
-      setTimeout(() => { el.style.opacity = "0"; }, 1600);
+      t2 = setTimeout(() => { el.style.opacity = "0"; }, 1600);
     }, 200);
-    return () => clearTimeout(t1);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
   return <div ref={ref} className="animus-scan" />;
 }
 
 function AnimusData() {
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(() => "SYS " + new Date().toLocaleTimeString("en-GB"));
   const [seq, setSeq] = useState("MEM_SEQ_01 / ANIMUS v2.0.1");
   useEffect(() => {
-    setTime("SYS " + new Date().toLocaleTimeString("en-GB"));
     const id = setInterval(() => setTime("SYS " + new Date().toLocaleTimeString("en-GB")), 1000);
     const handler = (e: Event) => setSeq((e as CustomEvent).detail);
     window.addEventListener("ark:seq", handler);
@@ -114,19 +114,20 @@ function EagleVision() {
 function BgShapes() {
   const ref = useRef<HTMLDivElement>(null);
   const promoted = useRef(false);
-  const idle = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const idle = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
-    const shapes = ref.current?.querySelectorAll<HTMLElement>(".shape[data-speed]");
-    if (!shapes) return;
+    const shapeEls = ref.current?.querySelectorAll<HTMLElement>(".shape[data-speed]");
+    if (!shapeEls?.length) return;
+    const shapes = Array.from(shapeEls);
+    const speeds = shapes.map(s => parseFloat(s.dataset.speed ?? "0"));
+    const isSquare = shapes.map(s => s.classList.contains("shape-square"));
     const onScroll = () => {
       const y = scrollY;
       if (!promoted.current) { shapes.forEach(s => s.style.willChange = "transform"); promoted.current = true; }
-      shapes.forEach(s => {
-        const speed = parseFloat(s.dataset.speed ?? "0");
-        const base = s.classList.contains("shape-square") ? "rotate(45deg) " : "";
-        s.style.transform = `${base}translateY(${y * speed}px)`;
+      shapes.forEach((s, i) => {
+        s.style.transform = `${isSquare[i] ? "rotate(45deg) " : ""}translateY(${y * speeds[i]}px)`;
       });
-      if (idle.current) clearTimeout(idle.current);
+      clearTimeout(idle.current);
       idle.current = setTimeout(() => { shapes.forEach(s => s.style.willChange = ""); promoted.current = false; }, 200);
     };
     window.addEventListener("scroll", onScroll, { passive: true });

@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-function scrollTo(id: string) {
-  if (!id) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
+import { navTo } from "@/lib/scroll";
 
 const links = [
   { id: "services", label: "Services" },
@@ -19,20 +15,25 @@ export default function Nav() {
 
   useEffect(() => {
     const init = window.location.pathname.replace(/^\//, "");
-    if (init) setTimeout(() => scrollTo(init), 150);
-    const onPop = () => scrollTo(window.location.pathname.replace(/^\//, ""));
+    if (init) setTimeout(() => navTo(init), 150);
+    const onPop = () => navTo(window.location.pathname.replace(/^\//, ""));
     window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
     const onOutside = (e: MouseEvent) => {
       const t = e.target as Element;
-      if (open && !t.closest("#mobileMenu") && !t.closest("#hamburger")) setOpen(false);
+      if (!t.closest("#mobileMenu") && !t.closest("#hamburger")) setOpen(false);
     };
     document.addEventListener("click", onOutside);
-    return () => { window.removeEventListener("popstate", onPop); document.removeEventListener("click", onOutside); };
+    return () => document.removeEventListener("click", onOutside);
   }, [open]);
 
   function nav(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
     e.preventDefault();
-    scrollTo(id);
+    navTo(id);
     history.pushState(null, "", id ? "/" + id : "/");
     setOpen(false);
   }
