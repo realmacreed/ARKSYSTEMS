@@ -41,7 +41,6 @@ export default function Hero() {
   const [filling, setFilling] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const orbRef = useRef<HTMLDivElement>(null);
   const touchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
@@ -53,11 +52,9 @@ export default function Hero() {
       const x = (e.clientX - left) / width - 0.5;
       const y = (e.clientY - top) / height - 0.5;
       if (contentRef.current) contentRef.current.style.transform = `translate(${x * 14}px,${y * 10}px)`;
-      if (orbRef.current) orbRef.current.style.transform = `translate(calc(-50% + ${x * 25}px),calc(-50% + ${y * 20}px))`;
     };
     const onLeave = () => {
       if (contentRef.current) contentRef.current.style.transform = "";
-      if (orbRef.current) orbRef.current.style.transform = "";
     };
     hero.addEventListener("mousemove", onMove);
     hero.addEventListener("mouseleave", onLeave);
@@ -67,7 +64,7 @@ export default function Hero() {
   return (
     <section id="hero" ref={heroRef}>
       <div className="hero-grid-bg" />
-      <div ref={orbRef} className="hero-orb" />
+      <div className="hero-orb" />
       <div ref={contentRef} className="hero-content">
         <div className="hero-label">Sterling Heights, MI &nbsp;·&nbsp; Web Design &amp; Development</div>
         <h1
