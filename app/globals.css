@@ -249,7 +249,7 @@ nav {
 .hero-title .line-2 { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(14,165,233,0.5); }
 .hero-terminal {
   font-family: var(--font-jetbrains), monospace;
-  font-size: 0.96rem;
+  font-size: 1.85rem;
   color: var(--ark-muted);
   margin-bottom: 2.75rem;
   min-height: 1.5em;
@@ -321,12 +321,12 @@ section {
   letter-spacing: -0.025em;
   line-height: 1.05;
 }
-.section-sub { font-size: 1.05rem; color: var(--ark-muted); margin-top: 0.75rem; max-width: 460px; }
+.section-sub { font-size: 1.35rem; color: var(--ark-muted); margin-top: 0.75rem; max-width: 560px; }
 
 /* ---- BUTTONS ---- */
 .btn-primary, .btn-submit {
   font-family: var(--font-jetbrains), monospace;
-  font-size: 0.7rem;
+  font-size: 1.25rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #060A0F;
@@ -347,7 +347,7 @@ section {
 }
 .btn-outline {
   font-family: var(--font-jetbrains), monospace;
-  font-size: 0.7rem;
+  font-size: 1.25rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ark-white);
@@ -379,7 +379,7 @@ section {
 .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(252,227,0,0.08), transparent); }
 .service-icon { font-size: 1.4rem; margin-bottom: 1.5rem; display: block; color: var(--blue); opacity: 0.8; }
 .service-title { font-family: var(--font-syne), sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.85rem; letter-spacing: -0.01em; }
-.service-desc { font-size: 1.05rem; color: var(--ark-muted); line-height: 1.75; }
+.service-desc { font-size: 1.25rem; color: var(--ark-muted); line-height: 1.75; }
 .service-num { font-family: var(--font-jetbrains), monospace; font-size: 0.6rem; color: rgba(14,165,233,0.2); position: absolute; bottom: 1.5rem; right: 1.75rem; letter-spacing: 0.1em; }
 
 /* ---- WORK ---- */
@@ -390,13 +390,13 @@ section {
 .work-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
 .tag { font-family: var(--font-jetbrains), monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-dim); padding: 0.18rem 0.5rem; border: 1px solid rgba(14,165,233,0.18); }
 .work-title { font-family: var(--font-syne), sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-.work-desc { font-size: 1rem; color: var(--ark-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+.work-desc { font-size: 1.25rem; color: var(--ark-muted); line-height: 1.7; margin-bottom: 1.25rem; }
 .work-link { font-family: var(--font-jetbrains), monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.25s, color 0.2s; }
 .work-link:hover { gap: 0.75rem; color: var(--yellow); }
 
 /* ---- ABOUT ---- */
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.about-body { font-size: 1.08rem; color: var(--ark-muted); line-height: 1.85; margin-bottom: 2.25rem; }
+.about-body { font-size: 1.25rem; color: var(--ark-muted); line-height: 1.85; margin-bottom: 2.25rem; }
 .about-body p + p { margin-top: 1rem; }
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border-subtle); }
 .stat { background: var(--bg-card); padding: 1.75rem; }
@@ -407,7 +407,7 @@ section {
 .contact-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; }
 .contact-item { margin-bottom: 2.25rem; }
 .contact-label { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
-.contact-value { font-size: 1.05rem; color: var(--ark-white); }
+.contact-value { font-size: 1.25rem; color: var(--ark-white); }
 .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -523,7 +523,7 @@ body.eagle-active .service-card, body.eagle-active .work-card { box-shadow: 0 0 
   section { padding: 4rem 1.25rem; }
   .hero-ctas { flex-direction: column; align-items: center; }
   .btn-primary, .btn-outline { width: 100%; text-align: center; }
-  .hero-terminal { font-size: 0.82rem; }
+  .hero-terminal { font-size: 1.5rem; }
 }
 @supports (padding: env(safe-area-inset-top)) {
   nav { padding-top: env(safe-area-inset-top); height: calc(68px + env(safe-area-inset-top)); }
