@@ -1,4 +1,7 @@
+"use client";
+
 import { Reveal } from "./reveal";
+import { navTo } from "@/lib/scroll";
 
 const projects = [
   {
@@ -43,7 +46,10 @@ export default function Work() {
                 <a
                   href={p.href}
                   className="work-link"
-                  {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(p.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : { onClick: (e) => { e.preventDefault(); navTo("contact"); history.pushState(null, "", "/contact"); } }
+                  )}
                 >
                   {p.external ? "View Project" : "Start a Project"} →
                 </a>
