@@ -11,14 +11,15 @@ export default function Contact() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setBtn({ text: "Sending...", disabled: true, style: {} });
     try {
       const res = await fetch("https://formspree.io/f/mwvazowd", {
-        method: "POST", body: new FormData(e.currentTarget), headers: { Accept: "application/json" },
+        method: "POST", body: new FormData(form), headers: { Accept: "application/json" },
       });
       if (res.ok) {
         setBtn({ text: "Message Sent ✓", disabled: true, style: { background: "#10b981" } });
-        e.currentTarget.reset();
+        form.reset();
         setTimeout(() => setBtn(DEFAULT_BTN), 3500);
       } else throw new Error();
     } catch {
