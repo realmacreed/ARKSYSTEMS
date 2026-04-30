@@ -398,7 +398,7 @@ section {
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-body { font-size: 1.25rem; color: var(--ark-muted); line-height: 1.85; margin-bottom: 2.25rem; }
 .about-body p + p { margin-top: 1rem; }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border-subtle); }
+.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border-subtle); }
 .stat { background: var(--bg-card); padding: 1.75rem; }
 .stat-num { font-family: var(--font-syne), sans-serif; font-weight: 800; font-size: 2.2rem; color: var(--yellow); line-height: 1; margin-bottom: 0.3rem; }
 .stat-label { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ark-muted); }
