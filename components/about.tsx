@@ -4,7 +4,6 @@ import { LetsTalkLink } from "./lets-talk-link";
 const stats = [
   { num: "100%", label: "Custom Builds" },
   { num: "48hr", label: "Response Time" },
-  { num: "2+", label: "Live Projects" },
   { num: "∞", label: "Revisions" },
 ];
 
