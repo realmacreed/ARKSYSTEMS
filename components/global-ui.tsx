@@ -63,11 +63,13 @@ function AnimusScan() {
   return <div ref={ref} className="animus-scan" />;
 }
 
+const fmtTime = () => "SYS " + new Date().toLocaleTimeString("en-GB");
+
 function AnimusData() {
-  const [time, setTime] = useState(() => "SYS " + new Date().toLocaleTimeString("en-GB"));
+  const [time, setTime] = useState(fmtTime);
   const [seq, setSeq] = useState("MEM_SEQ_01 / ANIMUS v2.0.1");
   useEffect(() => {
-    const id = setInterval(() => setTime("SYS " + new Date().toLocaleTimeString("en-GB")), 1000);
+    const id = setInterval(() => setTime(prev => { const t = fmtTime(); return prev === t ? prev : t; }), 1000);
     const handler = (e: Event) => setSeq((e as CustomEvent).detail);
     window.addEventListener("ark:seq", handler);
     return () => { clearInterval(id); window.removeEventListener("ark:seq", handler); };
@@ -76,7 +78,7 @@ function AnimusData() {
     <div className="animus-data" aria-hidden="true">
       <div>LAT 42.5803° N / LNG 83.0302° W</div>
       <div>{seq}</div>
-      <div>{time}</div>
+      <div suppressHydrationWarning>{time}</div>
     </div>
   );
 }

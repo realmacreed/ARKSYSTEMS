@@ -3,9 +3,9 @@ import { Syne, JetBrains_Mono, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 import { GlobalUI } from "@/components/global-ui";
 
-const syne = Syne({ subsets: ["latin"], weight: ["400","600","700","800"], variable: "--font-syne" });
-const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["300","400","500"], variable: "--font-jetbrains" });
-const chakra = Chakra_Petch({ subsets: ["latin"], weight: ["300","400","500","600"], style: ["normal","italic"], variable: "--font-chakra" });
+const syne = Syne({ subsets: ["latin"], weight: ["400","600","700","800"], variable: "--font-syne", display: "swap" });
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["300","400","500"], variable: "--font-jetbrains", display: "swap" });
+const chakra = Chakra_Petch({ subsets: ["latin"], weight: ["300","400","500","600"], style: ["normal","italic"], variable: "--font-chakra", display: "swap" });
 
 export const metadata: Metadata = {
   title: "ARK Systems LLC: Web Design & Development Sterling Heights MI",
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://formspree.io" />
+      </head>
       <body className={`${syne.variable} ${jetbrains.variable} ${chakra.variable}`}>
         <GlobalUI />
         {children}
