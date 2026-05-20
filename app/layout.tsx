@@ -8,8 +8,8 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["300","400","500
 const chakra = Chakra_Petch({ subsets: ["latin"], weight: ["300","400","500","600"], style: ["normal","italic"], variable: "--font-chakra", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "ARK Systems LLC: Web Design & Development Sterling Heights MI",
-  description: "ARK Systems LLC builds high-performance websites, web applications, and online stores for businesses across Sterling Heights, MI and beyond.",
+  title: "ARK Systems",
+  description: "ARK Systems LLC builds high-performance websites, web applications, and online stores for businesses across Sterling Heights, MI and beyond. We also offer drone recording, smart home setup, and security camera installation.",
   icons: { icon: "/favicon.svg" },
 };
 
