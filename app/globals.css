@@ -386,7 +386,8 @@ section {
 
 /* ---- WORK ---- */
 .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border-subtle); }
-.work-card { background: var(--bg); overflow: hidden; transform-style: preserve-3d; transition: background 0.3s, transform 0.1s; }
+.work-grid > div { display: flex; flex-direction: column; }
+.work-card { background: var(--bg); overflow: hidden; transform-style: preserve-3d; transition: background 0.3s, transform 0.1s; flex: 1; }
 .work-card:hover { background: var(--bg-card); }
 .work-card-body { padding: 1.75rem; }
 .work-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
