@@ -77,12 +77,13 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { font-size: 18px; }
 
 body {
   background: var(--bg);
   color: var(--ark-white);
   font-family: var(--font-chakra), sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.65;
   overflow-x: hidden;
 }
@@ -222,7 +223,7 @@ nav {
 .hero-content { position: relative; z-index: 2; max-width: 860px; text-align: center; }
 .hero-label {
   font-family: var(--font-jetbrains), monospace;
-  font-size: 0.67rem;
+  font-size: 10.7px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--blue);
@@ -456,8 +457,7 @@ footer {
 /* ---- ANIMUS DATA ---- */
 .animus-data { position: fixed; bottom: 28px; left: 28px; font-family: var(--font-jetbrains), monospace; font-size: 0.52rem; letter-spacing: 0.1em; pointer-events: none; z-index: 90; line-height: 1.9; color: rgba(252,227,0,0.2); }
 
-/* ---- SCAN + PROGRESS ---- */
-.animus-scan { position: fixed; top: -4px; left: 0; right: 0; height: 4px; background: linear-gradient(to bottom, transparent, var(--blue), transparent); box-shadow: 0 0 20px rgba(14,165,233,0.7), 0 0 60px rgba(14,165,233,0.3); z-index: 9000; pointer-events: none; opacity: 0; }
+/* ---- PROGRESS ---- */
 .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(to right, var(--blue), var(--yellow)); box-shadow: 0 0 12px rgba(252,227,0,0.4), 0 0 4px rgba(14,165,233,0.6); z-index: 200; transition: width 0.08s linear; }
 
 /* ---- EAGLE VISION ---- */

@@ -15,21 +15,6 @@ function ScrollProgress() {
   return <div ref={barRef} className="scroll-progress" />;
 }
 
-function AnimusScan() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    el.style.opacity = "1";
-    el.style.transition = "top 1.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s";
-    let t2: ReturnType<typeof setTimeout>;
-    const t1 = setTimeout(() => {
-      el.style.top = "100vh";
-      t2 = setTimeout(() => { el.style.opacity = "0"; }, 1600);
-    }, 200);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
-  return <div ref={ref} className="animus-scan" />;
-}
 
 const fmtTime = () => "SYS " + new Date().toLocaleTimeString("en-GB");
 
@@ -122,7 +107,6 @@ export function GlobalUI() {
   return (
     <>
       <ScrollProgress />
-      <AnimusScan />
       <div className="hud-corner hud-tl" /><div className="hud-corner hud-tr" />
       <div className="hud-corner hud-bl" /><div className="hud-corner hud-br" />
       <AnimusData />
