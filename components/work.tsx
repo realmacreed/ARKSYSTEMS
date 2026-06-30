@@ -12,10 +12,10 @@ const projects = [
     external: true,
   },
   {
-    tags: ["HTML/CSS/JS", "Branding", "Landing Page"],
-    title: "DallasExotics",
-    desc: "High-impact landing page for a Dallas luxury car rental brand featuring editorial dark layout, custom animations, multilingual support, and a seamless mobile experience.",
-    href: "https://dallasexotics.us",
+    tags: ["Next.js", "Branding", "Business Website"],
+    title: "JR Barber Haus",
+    desc: "Modern website for a Detroit-area barbershop featuring clean layout, service showcase, and a mobile-first experience built to drive bookings.",
+    href: "https://jrbarberhaus.com",
     external: true,
   },
   {

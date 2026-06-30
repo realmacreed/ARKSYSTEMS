@@ -2,38 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-function Cursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ dotX: 0, dotY: 0, ringX: 0, ringY: 0 });
-
-  useEffect(() => {
-    pos.current = { dotX: innerWidth / 2, dotY: innerHeight / 2, ringX: innerWidth / 2, ringY: innerHeight / 2 };
-    const onMove = (e: MouseEvent) => {
-      pos.current.dotX = e.clientX;
-      pos.current.dotY = e.clientY;
-      if (dotRef.current) { dotRef.current.style.left = e.clientX + "px"; dotRef.current.style.top = e.clientY + "px"; }
-    };
-    document.addEventListener("mousemove", onMove);
-    let raf: number;
-    const animate = () => {
-      pos.current.ringX += (pos.current.dotX - pos.current.ringX) * 0.12;
-      pos.current.ringY += (pos.current.dotY - pos.current.ringY) * 0.12;
-      if (ringRef.current) { ringRef.current.style.left = pos.current.ringX + "px"; ringRef.current.style.top = pos.current.ringY + "px"; }
-      raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-    return () => { document.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
-  }, []);
-
-  return (
-    <>
-      <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring" />
-    </>
-  );
-}
-
 function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -153,7 +121,6 @@ function BgShapes() {
 export function GlobalUI() {
   return (
     <>
-      <Cursor />
       <ScrollProgress />
       <AnimusScan />
       <div className="hud-corner hud-tl" /><div className="hud-corner hud-tr" />

@@ -76,8 +76,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-* { cursor: none; }
-@media (hover: none) { * { cursor: auto; } }
+
 
 body {
   background: var(--bg);
@@ -446,12 +445,6 @@ footer {
 .footer-links a { font-family: var(--font-jetbrains), monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: capitalize; color: var(--ark-muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--blue); }
 
-/* ---- CUSTOM CURSOR ---- */
-.cursor-dot { position: fixed; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); box-shadow: 0 0 8px rgba(14,165,233,0.9); }
-.cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(14,165,233,0.5); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s; }
-body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 46px; height: 46px; border-color: var(--yellow); box-shadow: var(--yellow-glow); }
-body:has(a:hover) .cursor-dot, body:has(button:hover) .cursor-dot { background: var(--yellow); box-shadow: 0 0 10px rgba(252,227,0,0.9); }
-@media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
 
 /* ---- HUD CORNERS ---- */
 .hud-corner { position: fixed; width: 18px; height: 18px; pointer-events: none; z-index: 90; opacity: 0.35; }
