@@ -14,7 +14,7 @@ services:
     headers:
       - path: /*
         name: Content-Security-Policy
-        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io; img-src 'self' data:; frame-ancestors 'none'"
+        value: "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
       - path: /*
         name: X-Frame-Options
         value: DENY
@@ -27,6 +27,9 @@ services:
       - path: /*
         name: Strict-Transport-Security
         value: max-age=31536000; includeSubDomains
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=(), payment=()
       - path: /*.html
         name: Cache-Control
         value: no-cache, no-store, must-revalidate

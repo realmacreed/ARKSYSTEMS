@@ -42,6 +42,7 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const touchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => () => clearTimeout(touchTimer.current), []);
 
   useEffect(() => {
     if (!window.matchMedia("(hover: hover)").matches) return;

@@ -7,7 +7,7 @@ function ScrollProgress() {
   useEffect(() => {
     const update = () => {
       const max = document.documentElement.scrollHeight - innerHeight;
-      if (barRef.current) barRef.current.style.width = (scrollY / max * 100) + "%";
+      if (barRef.current) barRef.current.style.width = max > 0 ? (scrollY / max * 100) + "%" : "0%";
     };
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
